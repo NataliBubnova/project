@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css%}
+    {% bootstrap_javascript%}
+    {% load static %}
+    <link rel = "stylesheet" type="text/css" href="{% static 'show_info.css'  %}">
+    <style>
+        header{
+            max-width:700px;
+        }
+        img{
+            width:80vw;
+            min-width: 600px;
+            max-width:700px;
+            height:400px;
+            background-position: center center;
+            background-size:cover;
+            transition: all .08s linear;
+        }
+    </style>
+</head>
+
+<body>
+{% block content %}
+
+
+{% endblock %}
+</body>
+</html>

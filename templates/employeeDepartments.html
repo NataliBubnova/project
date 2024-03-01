@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information about cars</title>
+    {% load static %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body{
+            background-image: url("/static/images/1.jpg");
+            background-position: center center;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+    <div class="shadow overflow">
+            <header style="">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown link
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+              </ul>
+                <form class="d-flex">
+                    <a href="{% url 'logout_user' %}" class="btn btn-outline-secondary" type="submit">Exit</a>
+                </form>
+            </div>
+          </div>
+
+        </nav>
+
+        <div class="container" style="height: 400px">
+        <div class="mx-auto d-grid gap-2" style="margin-top: 10px; width: 500px">
+            {% for department in department %}
+                <a href="{% url 'cars_brand'  department.name_department  %}" type="button" class="btn btn-outline-dark"
+                   style="margin-right: 50px">{{ department.name_department }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    </header>
+        </div>
+    </div>
+
+{% endblock %}
+
+</body>
+</html>

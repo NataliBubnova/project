@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information about cars</title>
+    {% load static %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% block content %}
+    <style>
+        body{
+            background-image: url("/static/images/1.jpg");
+            background-position: center center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shadow overflow">
+            <header style="">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown link
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+              </ul>
+                <form class="d-flex">
+                    <a href="{% url 'logout_user' %}" class="btn btn-outline-secondary" type="submit">Exit</a>
+                </form>
+            </div>
+          </div>
+
+        </nav>
+
+        <img src="/static/images/1.jpg">
+    </header>
+        <div id="profile">
+            <div class="name of brand:">
+                <h3><b>{{ car.name_of_model }}</b></h3>
+            </div>
+            <div class="location">
+                <i class="material-icons">place</i><a>{{ car.name_of_brand.country }}</a>
+            </div>
+            <div class="info_div">
+                <div class="info_div-item">
+                    <i class="material-icons">speed</i><p>acceleration to 100 km/h</p>
+                    <h4>6,8 second</h4>
+                </div>
+                <div class="info_div-item">
+                    <i class="material-icons">star</i><p>safety</p>
+                    <h4>5+</h4>
+                </div>
+                <div class="info_div-item">
+                    <i class="material-icons">event_seat</i><p>number of seats</p>
+                    <h4>{{ car.characteristic.bodywork.number_of_seats}}</h4>
+                </div>
+            </div>
+            <h6 style="margin-top: 20px"><b>Characteristic:</b></h6>
+            <table  class="table table-danger">
+                <thead>
+                    <tr style="text-align: center">
+                        <th scope="col">Model</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Transmission</th>
+                        <th scope="col">Bodywork</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="text-align: start">
+                        <td style="text-align: center">{{car.name_of_model}}</td>
+                        <td style="text-align: center">{{ car.price }}</td>
+                        <td style="text-align: center">{{ car.characteristic.actuator.motor.transmission.type_of_transmission }}</td>
+                        <td style="text-align: center">{{ car.characteristic.bodywork.classification }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}
+</body>
+
+</html>
